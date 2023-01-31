@@ -2,15 +2,26 @@
 
 A new Flutter project.
 
-## Getting Started
+## How to build
 
-This project is a starting point for a Flutter application.
+### Web Build
 
-A few resources to get you started if this is your first Flutter project:
+Build your app as an extension.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Please move to the root directory of the created app in the terminal and execute the following command.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+% flutter build web --web-renderer html --csp
+```
+
+### Adding to Chrome Extensions
+
+```
+chrome://extensions/
+```
+
+When the extension page opens, turn on developer mode in the top right.
+
+Press "Load unpackaged extension" and select the web folder in the build directory of your Flutter project.
+
+You have finished adding the extension.
