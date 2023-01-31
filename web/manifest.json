@@ -9,5 +9,11 @@
         "default_popup": "index.html",
         "default_icon": "/icons/Icon-192.png"
     },
-    "manifest_version": 3
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": ["https://*.chatwork.com/*"],
+            "js": ["jquery-3.6.0.min.js", "chatworkExtension.js"]
+        }
+    ]
 }
