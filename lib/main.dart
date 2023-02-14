@@ -35,7 +35,18 @@ class _MyAppState extends State<MyApp> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.data!.contains('https://www.chatwork.com')) {
-                    return Text(snapshot.data!);
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('[TO]以外のメッセージを一括で既読'),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: const Text('一括既読'),
+                        ),
+                      ],
+                    );
                   } else {
                     return const Text(
                       'Chatworkを開いてお使いください😥',
