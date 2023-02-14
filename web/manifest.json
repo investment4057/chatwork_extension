@@ -13,7 +13,7 @@
     "content_scripts": [
         {
             "matches": ["https://*.chatwork.com/*"],
-            "js": ["jquery-3.6.0.min.js", "chatworkExtension.js"]
+            "js": ["js/jquery-3.6.0.min.js", "js/chatwork_extension.js"]
         }
     ]
 }
