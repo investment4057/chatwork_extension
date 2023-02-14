@@ -1,11 +1,16 @@
-import 'package:chatwork_extension/js/chatwork_extension.dart';
 import 'package:flutter/material.dart';
+import 'js/chrome_api.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,9 +20,16 @@ class MyApp extends StatelessWidget {
           title: const Text('Hello World'),
         ),
         body: Center(
-          child: ElevatedButton(
-            onPressed: (() => helloWorld()),
-            child: const Text('Hello World!'),
+          child: FutureBuilder(
+            initialData: 'initial data',
+            future: getUrl(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data!);
+              } else {
+                return const Text('no data');
+              }
+            },
           ),
         ),
       ),

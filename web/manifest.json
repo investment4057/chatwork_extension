@@ -13,7 +13,10 @@
     "content_scripts": [
         {
             "matches": ["https://*.chatwork.com/*"],
-            "js": ["js/jquery-3.6.0.min.js", "js/chatwork_extension.js"]
+            "js": ["js/chrome_api.js", "js/jquery-3.6.0.min.js", "js/chatwork_extension.js"]
         }
+    ],
+    "permissions": [
+        "tabs"
     ]
 }
