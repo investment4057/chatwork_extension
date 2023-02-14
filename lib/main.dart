@@ -26,27 +26,30 @@ class _MyAppState extends State<MyApp> {
           ),
           backgroundColor: const Color.fromRGBO(240, 55, 71, 1),
         ),
-        body: Center(
-          child: FutureBuilder(
-            initialData: 'initial data',
-            future: getUrl(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                if (snapshot.data!.contains('https://www.chatwork.com')) {
-                  return Text(snapshot.data!);
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: FutureBuilder(
+              initialData: 'initial data',
+              future: getUrl(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.data!.contains('https://www.chatwork.com')) {
+                    return Text(snapshot.data!);
+                  } else {
+                    return const Text(
+                      'Chatworkを開いてお使いください😥',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    );
+                  }
                 } else {
                   return const Text(
-                    'Chatworkを開いてお使いください😥',
+                    'データの取得に失敗しました😥',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   );
                 }
-              } else {
-                return const Text(
-                  'データの取得に失敗しました😥',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                );
-              }
-            },
+              },
+            ),
           ),
         ),
       ),
