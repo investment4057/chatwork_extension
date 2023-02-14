@@ -14,10 +14,17 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello World',
+      title: 'Chatworker',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Hello World'),
+          centerTitle: false,
+          title: const Text(
+            'Chatworker',
+            style: TextStyle(
+              letterSpacing: 1,
+            ),
+          ),
+          backgroundColor: const Color.fromRGBO(240, 55, 71, 1),
         ),
         body: Center(
           child: FutureBuilder(
@@ -25,9 +32,19 @@ class _MyAppState extends State<MyApp> {
             future: getUrl(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data!);
+                if (snapshot.data!.contains('https://www.chatwork.com')) {
+                  return Text(snapshot.data!);
+                } else {
+                  return const Text(
+                    'Chatworkを開いてお使いください😥',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  );
+                }
               } else {
-                return const Text('no data');
+                return const Text(
+                  'データの取得に失敗しました😥',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                );
               }
             },
           ),
