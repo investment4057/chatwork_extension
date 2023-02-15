@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'js/chrome_api.dart';
+import 'js/chatwork_extension.dart';
 
 void main() => runApp(const MyApp());
 
@@ -42,7 +43,7 @@ class _MyAppState extends State<MyApp> {
                         const Text('[TO]以外のメッセージを一括で既読'),
                         const SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () => allOpenedChat(),
                           child: const Text('一括既読'),
                         ),
                       ],
