@@ -12,11 +12,17 @@
     "manifest_version": 3,
     "content_scripts": [
         {
-            "matches": ["https://*.chatwork.com/*"],
-            "js": ["js/chrome_api.js", "js/jquery-3.6.0.min.js", "js/chatwork_extension.js"]
+            "matches": ["https://www.chatwork.com/*"],
+            "js": ["js/jquery-3.6.0.min.js", "js/chrome_api.js", "js/chatwork_extension.js"]
         }
     ],
     "permissions": [
-        "tabs"
+        "activeTab",
+        "tabs",
+        "scripting"
+    ],
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
     ]
 }
