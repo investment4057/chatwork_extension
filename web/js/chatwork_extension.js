@@ -14,7 +14,6 @@ async function allOpenedChat() {
 }
 
 function openedItem() {
-  console.log('test');
   let selectElements = document.querySelectorAll("#RoomList ul li[role=listitem]");
   var d=new Date();
   var rid;
