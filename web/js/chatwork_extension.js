@@ -29,10 +29,3 @@ function openedItem() {
     }
   });
 }
-
-// Test Code
-function testFunc(fruits) {
-  for (const [key, value] of Object.entries(fruits)) {
-    console.log(`KEY is ${key}, VALUE is ${value}`);
-  }
-}
