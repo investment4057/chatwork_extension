@@ -5,11 +5,9 @@ import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
 @JS('allOpenedChat')
-// external allOpenedChat();
-external _allOpenedChat();
-// external void allOpenedChat();
+external _allOpenedChat(myId);
 
-Future<void> allOpenedChat() async {
+Future allOpenedChat(myId) async {
   // `promiseToFuture` メソッドでJavaScriptのPromiseをDartのFutureに変換
-  return promiseToFuture<void>(_allOpenedChat());
+  return promiseToFuture(_allOpenedChat(myId));
 }
