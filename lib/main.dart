@@ -67,8 +67,12 @@ class _MyAppState extends State<MyApp> {
         // Test Code
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            const String memo = 'Hello World!';
-            testFunc(memo);
+            testFunc(
+              Fruits(
+                name: 'Apple',
+                price: 150,
+              ),
+            );
           },
           child: const Icon(Icons.add),
         ),

@@ -16,4 +16,12 @@ Future<void> allOpenedChat() async {
 
 // Test Code
 @JS('testFunc')
-external void testFunc(String memo);
+external void testFunc(Fruits fruits);
+
+@JS()
+@anonymous
+class Fruits {
+  external String get name;
+  external int get price;
+  external factory Fruits({String name, int price});
+}
