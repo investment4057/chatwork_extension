@@ -4,7 +4,9 @@ async function getCurrentTab() {
   return tab;
 }
 
-async function allOpenedChat() {
+async function allOpenedChat(myId) {
+  console.log(myId);
+
   const tab = await getCurrentTab();
 
   await chrome.scripting.executeScript({

@@ -12,6 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String myId = '';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,6 +59,9 @@ class _MyAppState extends State<MyApp> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
+                            onChanged: (myID) {
+                              myId = myID;
+                            },
                           ),
                         ),
                       ],
@@ -78,7 +82,7 @@ class _MyAppState extends State<MyApp> {
                       children: [
                         const Text('[TO]以外を一括既読する'),
                         ElevatedButton(
-                          onPressed: () => allOpenedChat(),
+                          onPressed: () => allOpenedChat(myId),
                           child: const Text('一括既読'),
                         ),
                       ],
