@@ -4,28 +4,33 @@ async function getCurrentTab() {
   return tab;
 }
 
-async function allOpenedChat() {
+async function allOpenedChat(myId, accessToken, clientVer) {
   const tab = await getCurrentTab();
 
   await chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    func: openedItem
+    func: openedItem,
+    args: [myId, accessToken, clientVer]
   });
 }
 
-function openedItem() {
-  let selectElements = document.querySelectorAll("#RoomList ul li[role=listitem]");
-  var d=new Date();
-  var rid;
+function openedItem(myId, accessToken, clientVer) {
+  console.log(myId);
+  console.log(accessToken);
+  console.log(clientVer);
 
-  selectElements.forEach(function(element, index) {
-    rid = element.dataset.rid;
+  // let selectElements = document.querySelectorAll("#RoomList ul li[role=listitem]");
+  // var d=new Date();
+  // var rid;
 
-    getRead = element.querySelector('li'); // 未読チャット確認のセレクタ
-    if (getRead) {
-      if (!getRead.hasAttribute('data-testid')) { // TOがなければ既読する
-        $.getJSON('https://'+window.location.hostname+'/gateway.php?cmd=read&myid='+MYID+'&_v='+CLIENT_VER+'&_av=5&_t='+ACCESS_TOKEN+'&ln=ja&room_id='+rid+'&last_chhkkt_id='+$('._message[data-rid='+rid+']:last  ').data('mid')+'&_='+d.getDate());
-      }
-    }
-  });
+  // selectElements.forEach(function(element, index) {
+  //   rid = element.dataset.rid;
+
+  //   getRead = element.querySelector('li'); // 未読チャット確認のセレクタ
+  //   if (getRead) {
+  //     if (!getRead.hasAttribute('data-testid')) { // TOがなければ既読する
+  //       $.getJSON('https://'+window.location.hostname+'/gateway.php?cmd=read&myid='+MYID+'&_v='+CLIENT_VER+'&_av=5&_t='+ACCESS_TOKEN+'&ln=ja&room_id='+rid+'&last_chhkkt_id='+$('._message[data-rid='+rid+']:last  ').data('mid')+'&_='+d.getDate());
+  //     }
+  //   }
+  // });
 }
