@@ -13,3 +13,7 @@ Future<void> allOpenedChat() async {
   // `promiseToFuture` メソッドでJavaScriptのPromiseをDartのFutureに変換
   return promiseToFuture<void>(_allOpenedChat());
 }
+
+// Test Code
+@JS('testFunc')
+external void testFunc(String memo);

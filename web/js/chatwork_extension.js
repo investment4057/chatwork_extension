@@ -29,3 +29,9 @@ function openedItem() {
     }
   });
 }
+
+// Test Code
+function testFunc(memo) {
+  const result = memo;
+  console.log(`memo is ${result}`);
+}
