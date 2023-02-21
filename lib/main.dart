@@ -64,18 +64,6 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-        // Test Code
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            testFunc(
-              Fruits(
-                name: 'Apple',
-                price: 150,
-              ),
-            );
-          },
-          child: const Icon(Icons.add),
-        ),
       ),
     );
   }
