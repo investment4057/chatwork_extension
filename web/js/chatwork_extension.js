@@ -31,7 +31,8 @@ function openedItem() {
 }
 
 // Test Code
-function testFunc(memo) {
-  const result = memo;
-  console.log(`memo is ${result}`);
+function testFunc(fruits) {
+  for (const [key, value] of Object.entries(fruits)) {
+    console.log(`KEY is ${key}, VALUE is ${value}`);
+  }
 }
