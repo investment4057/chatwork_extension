@@ -12,6 +12,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String myId = '';
+  String clientVer = '';
+  String accessToken = '';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,7 +31,7 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: const Color.fromRGBO(240, 55, 71, 1),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: Center(
             child: FutureBuilder(
               initialData: 'initial data',
@@ -40,11 +43,104 @@ class _MyAppState extends State<MyApp> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('[TO]以外のメッセージを一括で既読'),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('MYIDを入力'),
+                            SizedBox(
+                              width: 160,
+                              child: TextField(
+                                enabled: true,
+                                decoration: InputDecoration(
+                                  hintText: 'MYID',
+                                  filled: true,
+                                  fillColor: Colors.grey.shade200,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                onChanged: (text) {
+                                  myId = text;
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('ACCESS_TOKENを入力'),
+                            SizedBox(
+                              width: 160,
+                              child: TextField(
+                                enabled: true,
+                                decoration: InputDecoration(
+                                  hintText: 'ACCESS_TOKEN',
+                                  filled: true,
+                                  fillColor: Colors.grey.shade200,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                onChanged: (text) {
+                                  accessToken = text;
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('CLIENT_VERを入力'),
+                            SizedBox(
+                              width: 160,
+                              child: TextField(
+                                enabled: true,
+                                decoration: InputDecoration(
+                                  hintText: 'CLIENT_VER',
+                                  filled: true,
+                                  fillColor: Colors.grey.shade200,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                onChanged: (text) {
+                                  clientVer = text;
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                         const SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: () => allOpenedChat(),
-                          child: const Text('一括既読'),
+                          onPressed: () {},
+                          child: const Text('保存する'),
+                        ),
+                        Divider(
+                          color: Colors.grey[300],
+                          thickness: 2,
+                          height: 80,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('[TO]以外を一括既読する'),
+                            ElevatedButton(
+                              onPressed: () =>
+                                  allOpenedChat(myId, accessToken, clientVer),
+                              child: const Text('一括既読'),
+                            ),
+                          ],
                         ),
                       ],
                     );
