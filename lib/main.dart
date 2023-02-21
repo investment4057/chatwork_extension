@@ -13,6 +13,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String myId = '';
+  String clientVer = '';
+  String accessToken = '';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,8 +61,60 @@ class _MyAppState extends State<MyApp> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
-                            onChanged: (myID) {
-                              myId = myID;
+                            onChanged: (text) {
+                              myId = text;
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('ACCESS_TOKENを入力'),
+                        SizedBox(
+                          width: 160,
+                          child: TextField(
+                            enabled: true,
+                            decoration: InputDecoration(
+                              hintText: 'ACCESS_TOKEN',
+                              filled: true,
+                              fillColor: Colors.grey.shade200,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                            onChanged: (text) {
+                              accessToken = text;
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('CLIENT_VERを入力'),
+                        SizedBox(
+                          width: 160,
+                          child: TextField(
+                            enabled: true,
+                            decoration: InputDecoration(
+                              hintText: 'CLIENT_VER',
+                              filled: true,
+                              fillColor: Colors.grey.shade200,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                            onChanged: (text) {
+                              clientVer = text;
                             },
                           ),
                         ),
@@ -82,7 +136,8 @@ class _MyAppState extends State<MyApp> {
                       children: [
                         const Text('[TO]以外を一括既読する'),
                         ElevatedButton(
-                          onPressed: () => allOpenedChat(myId),
+                          onPressed: () =>
+                              allOpenedChat(myId, accessToken, clientVer),
                           child: const Text('一括既読'),
                         ),
                       ],

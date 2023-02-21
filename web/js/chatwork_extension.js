@@ -4,15 +4,17 @@ async function getCurrentTab() {
   return tab;
 }
 
-async function allOpenedChat(myId) {
+async function allOpenedChat(myId, accessToken, clientVer) {
   console.log(myId);
+  console.log(accessToken);
+  console.log(clientVer);
 
-  const tab = await getCurrentTab();
+  // const tab = await getCurrentTab();
 
-  await chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    func: openedItem
-  });
+  // await chrome.scripting.executeScript({
+  //   target: { tabId: tab.id },
+  //   func: openedItem
+  // });
 }
 
 function openedItem() {
