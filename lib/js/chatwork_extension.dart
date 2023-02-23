@@ -11,3 +11,10 @@ Future allOpenedChat(myId, accessToken, clientVer) async {
   // `promiseToFuture` メソッドでJavaScriptのPromiseをDartのFutureに変換
   return promiseToFuture(_allOpenedChat(myId, accessToken, clientVer));
 }
+
+@JS('dataKeepStrage')
+external _dataKeepStrage(myId, accessToken, clientVer);
+
+Future dataKeepStrage(myId, accessToken, clientVer) async {
+  return promiseToFuture(_dataKeepStrage(myId, accessToken, clientVer));
+}
