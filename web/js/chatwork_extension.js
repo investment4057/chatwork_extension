@@ -15,6 +15,16 @@ async function allOpenedChat(myId, accessToken, clientVer) {
 }
 
 function openedItem(myId, accessToken, clientVer) {
+  chrome.storage.local.get([
+    'MYID',
+    'ACCESS_TOKEN',
+    'CLIENT_VER'
+  ]).then((result) => {
+    console.log('Value currently is ' + result.MYID);
+    console.log('Value currently is ' + result.ACCESS_TOKEN);
+    console.log('Value currently is ' + result.CLIENT_VER);
+  });
+
   // let selectElements = document.querySelectorAll("#RoomList ul li[role=listitem]");
   // var d=new Date();
   // var rid;
@@ -64,4 +74,9 @@ function keepStrage(myId, accessToken, clientVer) {
     console.log('Value currently is ' + result.ACCESS_TOKEN);
     console.log('Value currently is ' + result.CLIENT_VER);
   });
+}
+
+function dataGetStrage() {
+  // chrome.storage.local.getの処理を書いてreturnで取り出し
+  return 'return Text'
 }

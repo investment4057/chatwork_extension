@@ -15,6 +15,14 @@ class _MyAppState extends State<MyApp> {
   String myId = '';
   String clientVer = '';
   String accessToken = '';
+  String testText = '初期値'; // テスト用
+
+  @override
+  void initState() {
+    super.initState();
+    testText = dataGetStrage(); // chrome.storageからのデータをreturnで反映予定
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -121,9 +129,40 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                         const SizedBox(height: 20),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('JSからデータを渡す'),
+                            SizedBox(
+                              width: 160,
+                              child: TextFormField(
+                                enabled: true,
+                                decoration: InputDecoration(
+                                  hintText: 'JSからデータ',
+                                  filled: true,
+                                  fillColor: Colors.grey.shade200,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                initialValue: testText,
+                                onChanged: (text) {
+                                  testText = text;
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: () =>
-                              dataKeepStrage(myId, accessToken, clientVer),
+                          // onPressed: () =>
+                          //     dataKeepStrage(myId, accessToken, clientVer),
+                          onPressed: () {
+                            // final testText = dataGetStrage();
+                            print(testText);
+                          },
                           child: const Text('保存する'),
                         ),
                         Divider(
