@@ -76,7 +76,20 @@ function keepStrage(myId, accessToken, clientVer) {
   });
 }
 
-function dataGetStrage() {
-  // chrome.storage.local.getの処理を書いてreturnで取り出し
-  return 'return Text'
+// chrome.storageからMYIDを取り出す処理
+async function dataGetStrageMyid() {
+  const tab = await getCurrentTab();
+
+  await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: dataGetStrageMyidFunc
+  });
+}
+
+function dataGetStrageMyidFunc() {
+  chrome.storage.local.get(['MYID']).then((value) => {
+    var MYID = value;
+    console.log(MYID.MYID);
+    return MYID.toString();
+  });
 }
