@@ -19,6 +19,9 @@ Future dataKeepStrage(myId, accessToken, clientVer) async {
   return promiseToFuture(_dataKeepStrage(myId, accessToken, clientVer));
 }
 
-// テスト
-@JS('dataGetStrage')
-external dataGetStrage();
+@JS('dataGetStrageMyid')
+external _dataGetStrageMyid();
+
+Future<String> dataGetStrageMyid() async {
+  return promiseToFuture(_dataGetStrageMyid());
+}
