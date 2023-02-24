@@ -25,3 +25,12 @@ external _dataGetStrageMyid();
 Future<String> dataGetStrageMyid() async {
   return promiseToFuture(_dataGetStrageMyid());
 }
+
+// @JS('returnMyid')
+// external returnMyid();
+@JS('returnMyid')
+external String _returnMyid();
+
+Future<String> returnMyid() async {
+  return promiseToFuture<String>(_returnMyid());
+}
