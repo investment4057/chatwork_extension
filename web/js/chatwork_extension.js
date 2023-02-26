@@ -78,20 +78,23 @@ function keepStrage(myId, accessToken, clientVer) {
 
 // chrome.storageからMYIDを取り出す処理
 var myid = 'init message';
-async function returnMyid() {
-  const tab = await getCurrentTab();
+// async function returnMyid() {
+function returnMyid() {
+  // const tab = await getCurrentTab();
 
-  await chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    func: test
-  });
-}
+  // await chrome.scripting.executeScript({
+  //   target: { tabId: tab.id },
+  //   func: test
+  // });
 
-function test() {
-  console.log("myidに代入します。");
-  console.log(myid + ": returnMyid");
   return myid;
 }
+
+// function test() {
+//   console.log("myidに代入します。");
+//   console.log(myid + ": returnMyid");
+//   return myid;
+// }
 
 async function dataGetStrageMyid() {
   const tab = await getCurrentTab();
@@ -106,6 +109,7 @@ function dataGetStrageMyidFunc() {
   chrome.storage.local.get(['MYID']).then((value) => {
     myid = value.MYID;
     console.log('ChromeStorageから取り出します。');
-    console.log(myid);
+    console.log('MYID=' + myid);
+    console.log(typeof(myid));
   });
 }

@@ -11,24 +11,31 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+String myId = '777';
+String clientVer = '';
+String accessToken = '';
+
 class _MyAppState extends State<MyApp> {
-  String myId = '777';
-  String clientVer = '';
-  String accessToken = '';
+  final TextEditingController _myIdController =
+      TextEditingController(text: myId);
 
   @override
   void initState() {
     super.initState();
-    myId = test2().toString();
+
+    Future(() async {
+      await test2();
+      await test3();
+    });
   }
 
-  Future<String> test() {
-    return dataGetStrageMyid();
+  Future test2() async {
+    await dataGetStrageMyid();
   }
 
-  Future<String> test2() async {
-    await test();
-    return returnMyid().toString();
+  Future test3() async {
+    var id = await returnMyid();
+    _myIdController.text = await id;
   }
 
   @override
@@ -66,7 +73,7 @@ class _MyAppState extends State<MyApp> {
                         const Text('MYIDを入力'),
                         SizedBox(
                           width: 160,
-                          child: TextFormField(
+                          child: TextField(
                             enabled: true,
                             decoration: InputDecoration(
                               hintText: 'MYID',
@@ -77,7 +84,8 @@ class _MyAppState extends State<MyApp> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
-                            initialValue: myId,
+                            // initialValue: myId,
+                            controller: _myIdController,
                             onChanged: (text) {
                               myId = text;
                             },
