@@ -18,3 +18,10 @@ external _dataKeepStrage(myId, accessToken, clientVer);
 Future dataKeepStrage(myId, accessToken, clientVer) async {
   return promiseToFuture(_dataKeepStrage(myId, accessToken, clientVer));
 }
+
+@JS('dataGetStrageMyid')
+external _dataGetStrageMyid();
+
+Future dataGetStrageMyid() async {
+  return promiseToFuture(_dataGetStrageMyid());
+}
