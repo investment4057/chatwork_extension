@@ -16,26 +16,26 @@ String clientVer = '';
 String accessToken = '';
 
 class _MyAppState extends State<MyApp> {
-  final TextEditingController _myIdController =
-      TextEditingController(text: myId);
+  late TextEditingController _myIdController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
 
     Future(() async {
-      await test2();
-      await test3();
+      print(dataGetStrageMyid().runtimeType);
+      print('順0 : ' + myId);
+      myId = '888';
+      print('順1 : ' + myId);
+      final docs = dataGetStrageMyid();
+      await docs.then((value) {
+        print('順2 : ' + value);
+        myId = value;
+      });
+      print('順3 : ' + myId);
+
+      _myIdController = TextEditingController(text: myId);
     });
-  }
-
-  Future test2() async {
-    await dataGetStrageMyid();
-  }
-
-  Future test3() async {
-    var id = await returnMyid();
-    _myIdController.text = await id;
   }
 
   @override
