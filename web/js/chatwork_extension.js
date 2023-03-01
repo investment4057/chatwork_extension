@@ -15,6 +15,16 @@ async function allOpenedChat(myId, accessToken, clientVer) {
 }
 
 function openedItem(myId, accessToken, clientVer) {
+  chrome.storage.local.get([
+    'MYID',
+    'ACCESS_TOKEN',
+    'CLIENT_VER'
+  ]).then((result) => {
+    console.log('Value currently is ' + result.MYID);
+    console.log('Value currently is ' + result.ACCESS_TOKEN);
+    console.log('Value currently is ' + result.CLIENT_VER);
+  });
+
   // let selectElements = document.querySelectorAll("#RoomList ul li[role=listitem]");
   // var d=new Date();
   // var rid;
@@ -64,4 +74,47 @@ function keepStrage(myId, accessToken, clientVer) {
     console.log('Value currently is ' + result.ACCESS_TOKEN);
     console.log('Value currently is ' + result.CLIENT_VER);
   });
+}
+
+async function dataGetStrageMyid() {
+  var id = "999";
+
+  // const tab = await getCurrentTab();
+
+  // 試したコード
+  // await chrome.scripting.executeScript({
+  //   target: { tabId: tab.id },
+  //   func: dataGetStrageMyidFunc
+  // }).then(result => id = result);
+
+  // const test = await chrome.scripting.executeScript({
+  //   target: { tabId: tab.id },
+  //   func: dataGetStrageMyidFunc
+  // });
+  // await test.then(function(value) {
+  //   id = value;
+  // });
+
+  // const test = await chrome.scripting.executeScript({
+  //   target: { tabId: tab.id },
+  //   func: dataGetStrageMyidFunc
+  // });
+  // return test;
+
+  return id; // 999はOK. chrome.storageからのデータが渡らない...
+}
+
+async function dataGetStrageMyidFunc() {
+  var getId = "";
+
+  await chrome.storage.local.get(['MYID']).then((value) => {
+    getId = value.MYID;
+    console.log('ChromeStorageから取り出します');
+    console.log('MYID : ' + getId);
+    console.log(typeof(getId)); // String
+  });
+
+  console.log('Return : ' + getId);
+
+  return getId;
 }
