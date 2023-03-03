@@ -76,45 +76,29 @@ function keepStrage(myId, accessToken, clientVer) {
   });
 }
 
-async function dataGetStrageMyid() {
-  var id = "999";
-
-  // const tab = await getCurrentTab();
-
-  // 試したコード
-  // await chrome.scripting.executeScript({
-  //   target: { tabId: tab.id },
-  //   func: dataGetStrageMyidFunc
-  // }).then(result => id = result);
-
-  // const test = await chrome.scripting.executeScript({
-  //   target: { tabId: tab.id },
-  //   func: dataGetStrageMyidFunc
-  // });
-  // await test.then(function(value) {
-  //   id = value;
-  // });
-
-  // const test = await chrome.scripting.executeScript({
-  //   target: { tabId: tab.id },
-  //   func: dataGetStrageMyidFunc
-  // });
-  // return test;
-
-  return id; // 999はOK. chrome.storageからのデータが渡らない...
+function dataGetStrageMyidFunc() {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get(['MYID'], (value) => {
+      resolve(value.MYID);
+    });
+  });
 }
 
-async function dataGetStrageMyidFunc() {
-  var getId = "";
+async function dataGetStrageMyid() {
+  var id = "";
 
-  await chrome.storage.local.get(['MYID']).then((value) => {
-    getId = value.MYID;
-    console.log('ChromeStorageから取り出します');
-    console.log('MYID : ' + getId);
-    console.log(typeof(getId)); // String
+  const tab = await getCurrentTab();
+
+  await new Promise((resolve, reject) => {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: dataGetStrageMyidFunc,
+    },
+    (result) => {
+      id = result[0].result;
+      resolve();
+    });
   });
 
-  console.log('Return : ' + getId);
-
-  return getId;
+  return id;
 }
