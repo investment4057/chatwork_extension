@@ -11,11 +11,10 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-String myId = '777';
-String clientVer = '';
-String accessToken = '';
-
 class _MyAppState extends State<MyApp> {
+  String myId = '';
+  String clientVer = '';
+  String accessToken = '';
   late TextEditingController _myIdController = TextEditingController();
 
   @override
@@ -23,18 +22,10 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     Future(() async {
-      print(dataGetStrageMyid().runtimeType);
-      print('順0 : ' + myId);
-      myId = '888';
-      print('順1 : ' + myId);
-      final docs = dataGetStrageMyid();
-      await docs.then((value) {
-        print('順2 : ' + value);
-        myId = value;
+      myId = await dataGetStrageMyid();
+      setState(() {
+        _myIdController = TextEditingController(text: myId);
       });
-      print('順3 : ' + myId);
-
-      _myIdController = TextEditingController(text: myId);
     });
   }
 
