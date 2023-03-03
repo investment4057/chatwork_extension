@@ -25,3 +25,17 @@ external _dataGetStrageMyid();
 Future dataGetStrageMyid() async {
   return promiseToFuture(_dataGetStrageMyid());
 }
+
+@JS('dataGetStrageAccessToken')
+external _dataGetStrageAccessToken();
+
+Future dataGetStrageAccessToken() async {
+  return promiseToFuture(_dataGetStrageAccessToken());
+}
+
+@JS('dataGetStrageClientVer')
+external _dataGetStrageClientVer();
+
+Future dataGetStrageClientVer() async {
+  return promiseToFuture(_dataGetStrageClientVer());
+}
