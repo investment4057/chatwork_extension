@@ -76,86 +76,46 @@ function keepStrage(myId, accessToken, clientVer) {
   });
 }
 
-// MYIDを`chrome.storage`から取り出す処理
-function dataGetStrageMyidFunc() {
+// Chrome Storageから指定されたキーの値を取得する処理
+function dataGetStrageValueFunc(key) {
   return new Promise((resolve, reject) => {
-    chrome.storage.local.get(['MYID'], (value) => {
-      resolve(value.MYID);
+    chrome.storage.local.get([key], (value) => {
+      resolve(value[key]);
     });
   });
 }
 
-async function dataGetStrageMyid() {
-  var myId = "";
+async function dataGetStrageValue(key) {
+  var value = "";
 
   const tab = await getCurrentTab();
 
   await new Promise((resolve, reject) => {
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      func: dataGetStrageMyidFunc,
+      func: dataGetStrageValueFunc,
+      args: [key]
     },
     (result) => {
-      myId = result[0].result;
+      value = result[0].result;
       resolve();
     });
   });
 
-  return myId;
+  return value;
+}
+
+// MYIDを`chrome.storage`から取り出す処理
+async function dataGetStrageMyid() {
+  return await dataGetStrageValue('MYID');
 }
 
 // ACCESS_TOKENを`chrome.storage`から取り出す処理
-function dataGetStrageAccessTokenFunc() {
-  return new Promise((resolve, reject) => {
-    chrome.storage.local.get(['ACCESS_TOKEN'], (value) => {
-      resolve(value.ACCESS_TOKEN);
-    });
-  });
-}
-
 async function dataGetStrageAccessToken() {
-  var accessToken = "";
-
-  const tab = await getCurrentTab();
-
-  await new Promise((resolve, reject) => {
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      func: dataGetStrageAccessTokenFunc,
-    },
-    (result) => {
-      accessToken = result[0].result;
-      resolve();
-    });
-  });
-
-  return accessToken;
+  return await dataGetStrageValue('ACCESS_TOKEN');
 }
 
 // CLIENT_VERを`chrome.storage`から取り出す処理
-function dataGetStrageClientVerFunc() {
-  return new Promise((resolve, reject) => {
-    chrome.storage.local.get(['CLIENT_VER'], (value) => {
-      resolve(value.CLIENT_VER);
-    });
-  });
-}
-
 async function dataGetStrageClientVer() {
-  var clientVer = "";
-
-  const tab = await getCurrentTab();
-
-  await new Promise((resolve, reject) => {
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      func: dataGetStrageClientVerFunc,
-    },
-    (result) => {
-      clientVer = result[0].result;
-      resolve();
-    });
-  });
-
-  return clientVer;
+  return await dataGetStrageValue('CLIENT_VER');
 }
