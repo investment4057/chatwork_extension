@@ -76,6 +76,7 @@ function keepStrage(myId, accessToken, clientVer) {
   });
 }
 
+// MYIDを`chrome.storage`から取り出す処理
 function dataGetStrageMyidFunc() {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get(['MYID'], (value) => {
@@ -85,7 +86,7 @@ function dataGetStrageMyidFunc() {
 }
 
 async function dataGetStrageMyid() {
-  var id = "";
+  var myId = "";
 
   const tab = await getCurrentTab();
 
@@ -95,10 +96,66 @@ async function dataGetStrageMyid() {
       func: dataGetStrageMyidFunc,
     },
     (result) => {
-      id = result[0].result;
+      myId = result[0].result;
       resolve();
     });
   });
 
-  return id;
+  return myId;
+}
+
+// ACCESS_TOKENを`chrome.storage`から取り出す処理
+function dataGetStrageAccessTokenFunc() {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get(['ACCESS_TOKEN'], (value) => {
+      resolve(value.ACCESS_TOKEN);
+    });
+  });
+}
+
+async function dataGetStrageAccessToken() {
+  var accessToken = "";
+
+  const tab = await getCurrentTab();
+
+  await new Promise((resolve, reject) => {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: dataGetStrageAccessTokenFunc,
+    },
+    (result) => {
+      accessToken = result[0].result;
+      resolve();
+    });
+  });
+
+  return accessToken;
+}
+
+// CLIENT_VERを`chrome.storage`から取り出す処理
+function dataGetStrageClientVerFunc() {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get(['CLIENT_VER'], (value) => {
+      resolve(value.CLIENT_VER);
+    });
+  });
+}
+
+async function dataGetStrageClientVer() {
+  var clientVer = "";
+
+  const tab = await getCurrentTab();
+
+  await new Promise((resolve, reject) => {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: dataGetStrageClientVerFunc,
+    },
+    (result) => {
+      clientVer = result[0].result;
+      resolve();
+    });
+  });
+
+  return clientVer;
 }

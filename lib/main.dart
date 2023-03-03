@@ -13,9 +13,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String myId = '';
-  String clientVer = '';
   String accessToken = '';
+  String clientVer = '';
+
   late TextEditingController _myIdController = TextEditingController();
+  late TextEditingController _accessTokenController = TextEditingController();
+  late TextEditingController _clientVerController = TextEditingController();
 
   @override
   void initState() {
@@ -23,8 +26,13 @@ class _MyAppState extends State<MyApp> {
 
     Future(() async {
       myId = await dataGetStrageMyid();
+      accessToken = await dataGetStrageAccessToken();
+      clientVer = await dataGetStrageClientVer();
+
       setState(() {
         _myIdController = TextEditingController(text: myId);
+        _accessTokenController = TextEditingController(text: accessToken);
+        _clientVerController = TextEditingController(text: clientVer);
       });
     });
   }
@@ -75,7 +83,6 @@ class _MyAppState extends State<MyApp> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
-                            // initialValue: myId,
                             controller: _myIdController,
                             onChanged: (text) {
                               myId = text;
@@ -103,6 +110,7 @@ class _MyAppState extends State<MyApp> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
+                            controller: _accessTokenController,
                             onChanged: (text) {
                               accessToken = text;
                             },
@@ -129,6 +137,7 @@ class _MyAppState extends State<MyApp> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
+                            controller: _clientVerController,
                             onChanged: (text) {
                               clientVer = text;
                             },
