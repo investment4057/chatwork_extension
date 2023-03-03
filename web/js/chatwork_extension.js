@@ -15,16 +15,6 @@ async function allOpenedChat(myId, accessToken, clientVer) {
 }
 
 function openedItem(myId, accessToken, clientVer) {
-  chrome.storage.local.get([
-    'MYID',
-    'ACCESS_TOKEN',
-    'CLIENT_VER'
-  ]).then((result) => {
-    console.log('Value currently is ' + result.MYID);
-    console.log('Value currently is ' + result.ACCESS_TOKEN);
-    console.log('Value currently is ' + result.CLIENT_VER);
-  });
-
   let selectElements = document.querySelectorAll("#RoomList ul li[role=listitem]");
   var d=new Date();
   var rid;
@@ -52,27 +42,10 @@ async function dataKeepStrage(myId, accessToken, clientVer) {
 }
 
 function keepStrage(myId, accessToken, clientVer) {
-
-  window.alert('chrome.storageで保存・取得します!');
-
   chrome.storage.local.set({
     'MYID': myId,
     'ACCESS_TOKEN': accessToken,
     'CLIENT_VER': clientVer
-  }).then(() => {
-    console.log('Value is set to ' + myId);
-    console.log('Value is set to ' + accessToken);
-    console.log('Value is set to ' + clientVer);
-  });
-
-  chrome.storage.local.get([
-    'MYID',
-    'ACCESS_TOKEN',
-    'CLIENT_VER'
-  ]).then((result) => {
-    console.log('Value currently is ' + result.MYID);
-    console.log('Value currently is ' + result.ACCESS_TOKEN);
-    console.log('Value currently is ' + result.CLIENT_VER);
   });
 }
 
