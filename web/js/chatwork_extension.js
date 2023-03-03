@@ -25,20 +25,20 @@ function openedItem(myId, accessToken, clientVer) {
     console.log('Value currently is ' + result.CLIENT_VER);
   });
 
-  // let selectElements = document.querySelectorAll("#RoomList ul li[role=listitem]");
-  // var d=new Date();
-  // var rid;
+  let selectElements = document.querySelectorAll("#RoomList ul li[role=listitem]");
+  var d=new Date();
+  var rid;
 
-  // selectElements.forEach(function(element, index) {
-  //   rid = element.dataset.rid;
+  selectElements.forEach(function(element, index) {
+    rid = element.dataset.rid;
 
-  //   getRead = element.querySelector('li'); // 未読チャット確認のセレクタ
-  //   if (getRead) {
-  //     if (!getRead.hasAttribute('data-testid')) { // TOがなければ既読する
-  //       $.getJSON('https://'+window.location.hostname+'/gateway.php?cmd=read&myid='+MYID+'&_v='+CLIENT_VER+'&_av=5&_t='+ACCESS_TOKEN+'&ln=ja&room_id='+rid+'&last_chhkkt_id='+$('._message[data-rid='+rid+']:last  ').data('mid')+'&_='+d.getDate());
-  //     }
-  //   }
-  // });
+    getRead = element.querySelector('li'); // 未読チャット確認のセレクタ
+    if (getRead) {
+      if (!getRead.hasAttribute('data-testid')) { // TOがなければ既読する
+        $.getJSON('https://'+window.location.hostname+'/gateway.php?cmd=read&myid='+myId+'&_v='+clientVer+'&_av=5&_t='+accessToken+'&ln=ja&room_id='+rid+'&last_chhkkt_id='+$('._message[data-rid='+rid+']:last  ').data('mid')+'&_='+d.getDate());
+      }
+    }
+  });
 }
 
 async function dataKeepStrage(myId, accessToken, clientVer) {
