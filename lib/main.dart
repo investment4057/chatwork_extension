@@ -59,129 +59,129 @@ class _MyAppState extends State<MyApp> {
               initialData: 'initial data',
               future: getUrl(),
               builder: (context, snapshot) {
-                // if (snapshot.hasData) {
-                //   if (snapshot.data!.contains('https://www.chatwork.com')) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
+                if (snapshot.hasData) {
+                  if (snapshot.data!.contains('https://www.chatwork.com')) {
+                    return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('MYIDを入力'),
-                        SizedBox(
-                          width: 160,
-                          child: TextField(
-                            enabled: true,
-                            decoration: InputDecoration(
-                              hintText: 'MYID',
-                              filled: true,
-                              fillColor: Colors.grey.shade200,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide.none,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('MYIDを入力'),
+                            SizedBox(
+                              width: 160,
+                              child: TextField(
+                                enabled: true,
+                                decoration: InputDecoration(
+                                  hintText: 'MYID',
+                                  filled: true,
+                                  fillColor: Colors.grey.shade200,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                controller: _myIdController,
+                                onChanged: (text) {
+                                  myId = text;
+                                },
                               ),
                             ),
-                            controller: _myIdController,
-                            onChanged: (text) {
-                              myId = text;
-                            },
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('ACCESS_TOKENを入力'),
-                        SizedBox(
-                          width: 160,
-                          child: TextField(
-                            enabled: true,
-                            decoration: InputDecoration(
-                              hintText: 'ACCESS_TOKEN',
-                              filled: true,
-                              fillColor: Colors.grey.shade200,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide.none,
+                        const SizedBox(height: 20),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('ACCESS_TOKENを入力'),
+                            SizedBox(
+                              width: 160,
+                              child: TextField(
+                                enabled: true,
+                                decoration: InputDecoration(
+                                  hintText: 'ACCESS_TOKEN',
+                                  filled: true,
+                                  fillColor: Colors.grey.shade200,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                controller: _accessTokenController,
+                                onChanged: (text) {
+                                  accessToken = text;
+                                },
                               ),
                             ),
-                            controller: _accessTokenController,
-                            onChanged: (text) {
-                              accessToken = text;
-                            },
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('CLIENT_VERを入力'),
-                        SizedBox(
-                          width: 160,
-                          child: TextField(
-                            enabled: true,
-                            decoration: InputDecoration(
-                              hintText: 'CLIENT_VER',
-                              filled: true,
-                              fillColor: Colors.grey.shade200,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide.none,
+                        const SizedBox(height: 20),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('CLIENT_VERを入力'),
+                            SizedBox(
+                              width: 160,
+                              child: TextField(
+                                enabled: true,
+                                decoration: InputDecoration(
+                                  hintText: 'CLIENT_VER',
+                                  filled: true,
+                                  fillColor: Colors.grey.shade200,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                controller: _clientVerController,
+                                onChanged: (text) {
+                                  clientVer = text;
+                                },
                               ),
                             ),
-                            controller: _clientVerController,
-                            onChanged: (text) {
-                              clientVer = text;
-                            },
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () =>
-                          dataKeepStrage(myId, accessToken, clientVer),
-                      child: const Text('保存する'),
-                    ),
-                    Divider(
-                      color: Colors.grey[300],
-                      thickness: 2,
-                      height: 80,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('[TO]以外を一括既読する'),
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () =>
-                              allOpenedChat(myId, accessToken, clientVer),
-                          child: const Text('一括既読'),
+                              dataKeepStrage(myId, accessToken, clientVer),
+                          child: const Text('保存する'),
+                        ),
+                        Divider(
+                          color: Colors.grey[300],
+                          thickness: 2,
+                          height: 80,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('[TO]以外を一括既読する'),
+                            ElevatedButton(
+                              onPressed: () =>
+                                  allOpenedChat(myId, accessToken, clientVer),
+                              child: const Text('一括既読'),
+                            ),
+                          ],
                         ),
                       ],
-                    ),
-                  ],
-                );
-                //   } else {
-                //     return const Text(
-                //       'Chatworkを開いてお使いください😥',
-                //       style: TextStyle(fontWeight: FontWeight.bold),
-                //     );
-                //   }
-                // } else {
-                //   return const Text(
-                //     'データの取得に失敗しました😥',
-                //     style: TextStyle(fontWeight: FontWeight.bold),
-                //   );
-                // }
+                    );
+                  } else {
+                    return const Text(
+                      'Chatworkを開いてお使いください😥',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    );
+                  }
+                } else {
+                  return const Text(
+                    'データの取得に失敗しました😥',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  );
+                }
               },
             ),
           ),
