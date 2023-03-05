@@ -109,7 +109,13 @@ _chatText.on('keypress', () => {
         if (tag === 'hr') {
           _chatText.val(val.replace(regTagReplace, `[${tag}]`));
         } else {
-          _chatText.val(val.replace(regTagReplace, `[${tag}]${tag === 'hr' ? '' : '\n'}[/${tag}]`));
+          const tagStart = `[${tag}]`;
+          const tagEnd = `[/${tag}]`;
+          const replacement = tagStart + '$1' + tagEnd;
+          _chatText.val(val.replace(regTagReplace, replacement));
+
+          const selectionStart = _chatText.val().indexOf(tagStart) + tagStart.length;
+          _chatText[0].setSelectionRange(selectionStart, selectionStart + '$1'.length);
         }
       };
       makeTag();
