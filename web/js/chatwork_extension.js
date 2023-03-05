@@ -102,11 +102,24 @@ _chatText.on('keypress', function(e) {
     var regTagReplace = new RegExp(":" + tag);
 
     if (_chatText.val().match(regTagMatch)) {
-      var makeInfoTag = function() {
+      var makeClosedTag = function() {
         var val = _chatText.val();
         _chatText.val(val.replace(regTagReplace, "[" + tag + "]\n[/" + tag + "]"));
       };
-      makeInfoTag();
+      makeClosedTag();
+    }
+  });
+
+  ['hr'].forEach(function(tag) {
+    var regTagMatch = new RegExp("(^|\n):" + tag +"($|\n)");
+    var regTagReplace = new RegExp(":" + tag);
+
+    if (_chatText.val().match(regTagMatch)) {
+      var makeTag = function() {
+        var val = _chatText.val();
+        _chatText.val(val.replace(regTagReplace, "[" + tag + "]"));
+      };
+      makeTag();
     }
   });
 });
