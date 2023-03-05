@@ -94,30 +94,23 @@ async function dataGetStrageClientVer() {
 }
 
 // タグの生成
-var _chatText = $('#_chatText');
-_chatText.on('keypress', function(e) {
-  // ex) `:info` + Enter
-  ['info', 'title', 'code'].forEach(function(tag) {
-    var regTagMatch = new RegExp("(^|\n):" + tag +"($|\n)");
-    var regTagReplace = new RegExp(":" + tag);
+const _chatText = $('#_chatText');
+_chatText.on('keypress', () => {
+  const tags = ['info', 'title', 'code', 'hr'];
+
+  tags.forEach(tag => {
+    const regTagMatch = new RegExp(`(^|\n):${tag}($|\n)`);
+    const regTagReplace = new RegExp(`:${tag}`);
 
     if (_chatText.val().match(regTagMatch)) {
-      var makeClosedTag = function() {
-        var val = _chatText.val();
-        _chatText.val(val.replace(regTagReplace, "[" + tag + "]\n[/" + tag + "]"));
-      };
-      makeClosedTag();
-    }
-  });
+      const makeTag = () => {
+        const val = _chatText.val();
 
-  ['hr'].forEach(function(tag) {
-    var regTagMatch = new RegExp("(^|\n):" + tag +"($|\n)");
-    var regTagReplace = new RegExp(":" + tag);
-
-    if (_chatText.val().match(regTagMatch)) {
-      var makeTag = function() {
-        var val = _chatText.val();
-        _chatText.val(val.replace(regTagReplace, "[" + tag + "]"));
+        if (tag === 'hr') {
+          _chatText.val(val.replace(regTagReplace, `[${tag}]`));
+        } else {
+          _chatText.val(val.replace(regTagReplace, `[${tag}]${tag === 'hr' ? '' : '\n'}[/${tag}]`));
+        }
       };
       makeTag();
     }
