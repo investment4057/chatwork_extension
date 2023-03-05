@@ -92,3 +92,34 @@ async function dataGetStrageAccessToken() {
 async function dataGetStrageClientVer() {
   return await dataGetStrageValue('CLIENT_VER');
 }
+
+// タグの生成
+var _chatText = $('#_chatText');
+_chatText.on('keypress', function(e) {
+  // ex) `:info` + Enter
+  ['info', 'title', 'code'].forEach(function(tag) {
+    var regTagMatch = new RegExp("(^|\n):" + tag +"($|\n)");
+    var regTagReplace = new RegExp(":" + tag);
+
+    if (_chatText.val().match(regTagMatch)) {
+      var makeClosedTag = function() {
+        var val = _chatText.val();
+        _chatText.val(val.replace(regTagReplace, "[" + tag + "]\n[/" + tag + "]"));
+      };
+      makeClosedTag();
+    }
+  });
+
+  ['hr'].forEach(function(tag) {
+    var regTagMatch = new RegExp("(^|\n):" + tag +"($|\n)");
+    var regTagReplace = new RegExp(":" + tag);
+
+    if (_chatText.val().match(regTagMatch)) {
+      var makeTag = function() {
+        var val = _chatText.val();
+        _chatText.val(val.replace(regTagReplace, "[" + tag + "]"));
+      };
+      makeTag();
+    }
+  });
+});
