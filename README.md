@@ -14,7 +14,8 @@
 
 内容 | ショートカット | 備考
 --- | --- | ---
-[info][/info]などのタグを生成 | `:info + enter` | info, code, title, hrに対応
+[info][/info]などのタグを生成 | `:info + enter` | info, code, titleに対応
+[hr]のタグを生成 | `:hr + enter` |
 
 ## How to build
 
