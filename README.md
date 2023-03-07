@@ -1,6 +1,22 @@
-# chatwork_extension
+# チャットワークのChrome拡張機能
 
-A new Flutter project.
+## 機能
+
+### TO以外のチャットをすべて一括既読
+
+以下を入力して保存することで、TO以外のチャットをすべて既読できます
+
+- MYID
+- ACCESS_TOKEN
+- CLIENT_VER
+
+<img src="/assets/images_github/chatworker_1.png" width="250px">
+
+### コマンドでタグの生成
+
+内容 | ショートカット | 備考
+--- | --- | ---
+[info][/info]などのタグを生成 | `:info + enter` | info, code, title, hrに対応
 
 ## How to build
 
