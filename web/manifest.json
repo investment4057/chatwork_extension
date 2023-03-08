@@ -9,6 +9,11 @@
         "default_popup": "index.html",
         "default_icon": "/icons/chatwork.png"
     },
+    "icons": {
+        "16": "/icons/chatwork16.png",
+        "48": "/icons/chatwork48.png",
+        "128": "/icons/chatwork128.png"
+    },
     "manifest_version": 3,
     "content_scripts": [
         {
