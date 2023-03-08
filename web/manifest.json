@@ -1,6 +1,6 @@
 {
-    "name": "chatwork_extension",
-    "description": "chatwork_extension",
+    "name": "チャットワーカー",
+    "description": "チャットワークの自分宛（TO）以外を一括で既読できます。",
     "version": "1.0.0",
     "content_security_policy": {
         "extension_pages": "script-src 'self' ; object-src 'self'"
