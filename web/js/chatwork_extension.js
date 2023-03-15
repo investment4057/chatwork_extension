@@ -25,7 +25,9 @@ function openedItem(myId, accessToken, clientVer) {
     getRead = element.querySelector('li'); // 未読チャット確認のセレクタ
     if (getRead) {
       if (!getRead.hasAttribute('data-testid')) { // TOがなければ既読する
-        $.getJSON('https://'+window.location.hostname+'/gateway.php?cmd=read&myid='+myId+'&_v='+clientVer+'&_av=5&_t='+accessToken+'&ln=ja&room_id='+rid+'&last_chhkkt_id='+$('._message[data-rid='+rid+']:last  ').data('mid')+'&_='+d.getDate());
+        if (element.children[1].classList.contains('_showDescription')) {
+          $.getJSON('https://'+window.location.hostname+'/gateway.php?cmd=read&myid='+myId+'&_v='+clientVer+'&_av=5&_t='+accessToken+'&ln=ja&room_id='+rid+'&last_chhkkt_id='+$('._message[data-rid='+rid+']:last  ').data('mid')+'&_='+d.getDate());
+        }
       }
     }
   });
