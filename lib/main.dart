@@ -25,9 +25,9 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     Future(() async {
-      myId = await dataGetStrageMyid();
-      accessToken = await dataGetStrageAccessToken();
-      clientVer = await dataGetStrageClientVer();
+      myId = await dataGetStrageMyid() ?? '';
+      accessToken = await dataGetStrageAccessToken() ?? '';
+      clientVer = await dataGetStrageClientVer() ?? '';
 
       setState(() {
         _myIdController = TextEditingController(text: myId);
