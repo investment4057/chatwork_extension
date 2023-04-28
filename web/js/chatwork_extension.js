@@ -55,7 +55,15 @@ function keepStrage(myId, accessToken, clientVer) {
 function dataGetStrageValueFunc(key) {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get([key], (value) => {
-      resolve(value[key] || "");
+      if (value[key] === undefined) {
+        let setValue = {};
+        setValue[key] = "";
+        chrome.storage.local.set(setValue, () => {
+          resolve("");
+        });
+      } else {
+        resolve(value[key]);
+      }
     });
   });
 }
