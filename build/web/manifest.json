@@ -1,0 +1,34 @@
+{
+    "name": "チャットワーカー",
+    "description": "チャットワークの自分宛（TO）以外を一括で既読できます。",
+    "version": "1.0.0",
+    "content_security_policy": {
+        "extension_pages": "script-src 'self' ; object-src 'self'"
+    },
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "/icons/chatwork.png"
+    },
+    "icons": {
+        "16": "/icons/chatwork16.png",
+        "48": "/icons/chatwork48.png",
+        "128": "/icons/chatwork128.png"
+    },
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": ["https://www.chatwork.com/*"],
+            "js": ["js/jquery-3.6.0.min.js", "js/chrome_api.js", "js/chatwork_extension.js"]
+        }
+    ],
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "scripting",
+        "storage"
+    ],
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ]
+}
