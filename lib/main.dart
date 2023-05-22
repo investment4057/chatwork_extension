@@ -160,7 +160,7 @@ class _MyAppState extends State<MyApp> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text('[TO]以外を一括既読する'),
+                            const Text('[TO]とピンチャット以外を一括既読'),
                             ElevatedButton(
                               onPressed: () =>
                                   allOpenedChat(myId, accessToken, clientVer),
