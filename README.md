@@ -20,7 +20,7 @@
 - ACCESS_TOKEN
 - CLIENT_VER
 
-<img src="/assets/images_github/chatworker_1.png" width="250px">
+[![Image from Gyazo](https://i.gyazo.com/19da361c0a5edf0f5c0b6a1ea999643b.png)](https://gyazo.com/19da361c0a5edf0f5c0b6a1ea999643b)
 
 ※チャットワーク上で右クリック → ページのソースを表示 → 以下の赤枠部分をコピペしてください。
 
