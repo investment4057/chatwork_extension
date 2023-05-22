@@ -26,14 +26,14 @@
 
 [![Image from Gyazo](https://i.gyazo.com/636aa2e13c15f397d626380b746d534c.png)](https://gyazo.com/636aa2e13c15f397d626380b746d534c)
 
-## コマンドでタグの生成
+~~## コマンドでタグの生成~~
 
 内容 | ショートカット | 備考
 --- | --- | ---
-[info][/info]などのタグを生成 | `:info + enter` | info, code, titleに対応
-[hr]のタグを生成 | `:hr + enter` |
+~~[info][/info]などのタグを生成~~ | ~~`:info + enter`~~ | ~~info, code, titleに対応~~
+~~[hr]のタグを生成~~ | ~~`:hr + enter`~~ |
 
-[![Image from Gyazo](https://i.gyazo.com/b49ee42598972dfe6e1b2b99da32e46f.gif)](https://gyazo.com/b49ee42598972dfe6e1b2b99da32e46f)
+<!-- [![Image from Gyazo](https://i.gyazo.com/b49ee42598972dfe6e1b2b99da32e46f.gif)](https://gyazo.com/b49ee42598972dfe6e1b2b99da32e46f) -->
 
 ## 拡張機能の導入方法
 
@@ -57,9 +57,9 @@ chrome://extensions/
 
 [![Image from Gyazo](https://i.gyazo.com/81ace0142c95c933a77a35f46369df5a.png)](https://gyazo.com/81ace0142c95c933a77a35f46369df5a)
 
-ファイル選択のポップアップが表示されるので、本ソースコードの「webフォルダ」を選択して決定してください。
+ファイル選択のポップアップが表示されるので、本ソースコードの「buildフォルダ」内にある「webフォルダ」を選択して決定してください。
 
-[![Image from Gyazo](https://i.gyazo.com/060749e80b6b4699fe4998bc96c242aa.png)](https://gyazo.com/060749e80b6b4699fe4998bc96c242aa)
+[![Image from Gyazo](https://i.gyazo.com/cb61b0495627608f70f2fc802361235f.png)](https://gyazo.com/cb61b0495627608f70f2fc802361235f)
 
 以上で追加は完了です。
 
