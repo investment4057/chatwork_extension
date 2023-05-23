@@ -20,7 +20,7 @@ const RESOURCES = {
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/chatwork128.png": "503eb8d346716f4deafe2a38bf8601d0",
-"manifest.json": "9dfde2200d0d6f5d52ac49e50679d01a",
+"manifest.json": "227f77d60ca5547ed052891d84c68693",
 "assets/AssetManifest.json": "2efbb41d7877d10aac9d091f58ccd7b9",
 "assets/NOTICES": "6dc8d86f1fb1ef4dc870b45eef83c333",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
