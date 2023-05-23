@@ -147,8 +147,22 @@ class _MyAppState extends State<MyApp> {
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: () =>
-                              dataKeepStrage(myId, accessToken, clientVer),
+                          onPressed: () async {
+                            await dataKeepStrage(myId, accessToken, clientVer);
+                            if (!mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: const Text('保存しました！'),
+                                behavior: SnackBarBehavior.floating,
+                                margin: EdgeInsets.only(
+                                  right: 20,
+                                  left: 20,
+                                  bottom:
+                                      MediaQuery.of(context).size.height - 80,
+                                ),
+                              ),
+                            );
+                          },
                           child: const Text('保存する'),
                         ),
                         Divider(
@@ -162,8 +176,24 @@ class _MyAppState extends State<MyApp> {
                           children: [
                             const Text('[TO]とピンチャット以外を一括既読'),
                             ElevatedButton(
-                              onPressed: () =>
-                                  allOpenedChat(myId, accessToken, clientVer),
+                              onPressed: () async {
+                                await allOpenedChat(
+                                    myId, accessToken, clientVer);
+                                if (!mounted) return;
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: const Text('一括既読が完了しました！'),
+                                    behavior: SnackBarBehavior.floating,
+                                    margin: EdgeInsets.only(
+                                      right: 20,
+                                      left: 20,
+                                      bottom:
+                                          MediaQuery.of(context).size.height -
+                                              80,
+                                    ),
+                                  ),
+                                );
+                              },
                               child: const Text('一括既読'),
                             ),
                           ],
